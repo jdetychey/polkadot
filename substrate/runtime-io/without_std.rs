@@ -29,7 +29,7 @@ pub use rstd::{mem, slice};
 
 #[panic_implementation]
 #[no_mangle]
-pub fn rust_begin_panic(info: &::core::panic::PanicInfo) -> ! {
+pub fn panic(info: &::core::panic::PanicInfo) -> ! {
 	unsafe {
 		if let Some(loc) = info.location() {
 			ext_print_utf8(loc.file().as_ptr() as *const u8, loc.file().len() as u32);
